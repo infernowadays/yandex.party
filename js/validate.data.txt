@@ -1,0 +1,48 @@
+  validate: function() {
+    document.getElementById("submitButton").disabled = false;
+    var isValid = true;
+
+    //validate fio
+    var fio = obj.fio;
+    if (fio.value.length != 0) {
+      var stringText = fio.value.replace(/\n/, " ").replace(/[^à-ÿÀ-ß¸¨A-Za-z_]/gi, " ").replace(/\s{2,}/gi, " ").replace(/ $/, "").replace(/^ /, "");
+      var text_array = stringText.split(" ");
+      if (text_array.length != 3) {
+        $("#fio").addClass("error");
+        isValid = false;
+      } else {
+        $("#fio").removeClass("error");
+      }
+    }
+
+    //validate email
+    var email = obj.email.value;
+    if (email.length != 0) {
+      var emailPattern_1 = /[0-9a-z_]+@(ya.ru||yandex.ru||yandex.ua||yandex.by||yandex.kz||yandex.com)$/i;
+      var prov = emailPattern_1.test(email);
+      if (prov != true) {
+        $("#email").addClass("error");
+        isValid = false;
+      } else $("#email").removeClass("error");
+    }
+
+    //validate phone
+    var phone = obj.phone;
+    if (phone.value.length != 0) {
+      var sum = 0;
+      for (var i = 0; i < 15; i++) {
+        if (!isNaN(phone.value.charAt(i))) sum += parseInt(phone.value.charAt(i));
+      }
+      if (sum > 30 || isNaN(sum)) {
+        $("#phone").addClass("error");
+        isValid = false;
+      } else {
+        $("#phone").removeClass("error");
+      }
+    }
+
+    //check fileds're null
+    if (fio.value.length == 0 || email.length == 0 || phone.value.length == 0) return false;
+  },
+
+///document.getElementsByName('fio').item(0)

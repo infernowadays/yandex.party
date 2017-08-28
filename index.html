@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Yandex Task</title>
+
+  <!---ajax--->
+  <script src="js/jquery-1.11.2.min.js"></script>
+
+  <!---validate_data-->
+  <script src="js/index.js" type="text/javascript"></script>
+
+  <!---phone_number_format--->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.mask.js"></script>
+
+</head>
+
+<body>
+
+  <form action="" onsubmit="return MyForm.submit(myForm)" method="POST" id="myForm">
+    <p><input type="text" name="fio" id="fio" placeholder="ФИО" required/></p>
+    <p><input type="text" name="email" id="email" placeholder="Email" required/></p>
+    <p><input type="text" name="phone" id="phone" placeholder="Телефон" required/></p>
+    <button type="submit" id="submitButton" onclick="MyForm.submit(myForm)">Отправить</button>
+  </form>
+
+  <div id="resultContainer"></div>
+
+
+</body>
+
+<style type="text/css">
+  input {
+    height: 20px;
+    border: 1px solid black;
+  }
+
+  .error {
+    border: 1px solid red;
+    height: 20px;
+  }
+
+  .success {
+    border: 1px solid green;
+  }
+
+  .progress {
+    border: 1px solid gray;
+  }
+</style>
+
+<script type="text/javascript">
+  $("#phone").mask('+7(000)00-00-00');
+  ///Json();
+</script>
+
+</html>
